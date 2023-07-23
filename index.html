@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+
+            header{
+                background-color: darkseagreen;
+            }
+            .row.social a{
+                padding-left: 10px;
+                color: ghostwhite;
+                text-align: left;
+            }
+
+            .row.social address{
+                padding-right: 10px;
+                padding-top: 20px;
+                color: black;
+                text-align: center;
+            }
+
+            .flex-header {
+                display: flex;
+                justify-content: space-between; /* Align divs on opposite ends */
+                align-items: center;
+            }
+
+            @keyframes logoAnimation {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.1) rotate(10deg);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            .logo-animation {
+                animation: logoAnimation 3s infinite;
+                display: inline-block;
+            }
+
+            .logo,
+            .address {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .logo {
+                float: left;
+                animation: moveButton 1s;
+            }
+
+            .address {
+                float: right;
+            }
+
+            .address a {
+                display: inline-block;
+                margin: 0 5px;
+            }
+
+            .address a img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+
+            .flex-nav {
+                opacity: 0.8;
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+
+            }
+            .flex-nav > div
+            {
+                text-align:center;
+                margin: 10px;
+                padding: 10px;
+                float : left;
+            }
+            .logo a{
+                text-decoration: none;
+                color: green;
+                font-family: 'Cookie', cursive;
+                font-size: 3rem;
+                text-shadow: 1px 1px 1px white;
+                border-bottom: 2px solid green ;
+                border-top: 2px solid orange;
+
+            }
+            .flex-nav a{
+                color: white;
+                text-decoration: none;
+                font-family: monospace;
+                font-size: 1.3rem;
+            }
+            .flex-nav a:hover{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: black;
+            }
+            .main-banner {
+                position: relative;
+            }
+
+            .video-container {
+                position: relative;
+                width: 100%;
+                text-shadow: 3px 3px 3px orange;
+                z-index: 1;
+            }
+
+            .banner-video {
+                width: 100%;
+                height: 60%;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #ffffff;
+            }
+
+            @keyframes zoom {
+                from {
+                    transform: scale(1);
+                }
+                to {
+                    transform: scale(1.2);
+                }
+            }
+
+            @keyframes blink {
+                0% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+
+            .main-banner .overlay h1 {
+                font-size: 3em;
+                animation: zoom 2s infinite alternate;
+
+            }
+            @keyframes fadeAnimation {
+                0% {
+                    background-color: rgba(255, 140, 0, 0);
+                }
+                50% {
+                    background-color: rgba(255, 165, 0, 1);
+                }
+                100% {
+                    background-color: rgba(255, 140, 0, 0);
+                }
+            }
+            .cta-button {
+                display: inline-block;
+                padding: 12px 24px;
+                background-color: #ffffff;
+                color: white;
+                font-size: 1rem;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                border-radius: 4px;  
+                animation: fadeAnimation 3s infinite;
+
+            }
+
+            .cta-button:hover {
+                background-color: lightgreen;
+            }
+
+            .main-about-flex-container {
+                display: flex;
+            }
+
+            .main-about-flex-container > div {
+                background-color: #f1f1f1;
+                padding: 10px;
+                flex-grow: 1;
+                width: 50%;
+            }
+
+            .main-about-flex-container img {
+                width: 100%;
+                height: 500px;
+                box-shadow: 2px 2px 4px black;
+            }
+
+            .main-about-flex-container p {
+                text-align: justify;
+                font-size: 1em;
+                font-family: cursive, sans-serif;
+            }
+
+            .main-about-flex-container h1 {
+                background-color: lightgreen;
+                color: darkorange;
+                text-align: center;
+                font-size: 2em;
+                font-family: 'Pacifico', cursive;
+            }
+
+            .main-about-flex-container ul {
+                list-style-type: none;
+                font-size: 1em;
+                line-height: 2;
+                font-family: cursive, sans-serif;
+            }
+
+            .main-about-flex-container ul li:before {
+                content: '✓ ';
+                color: red;
+                font-weight: bold;
+            }
+
+            .checked {
+                color: orange;
+            }
+
+            .main-top-rated {
+                margin: 10px;
+            }
+
+            .main-top-rated h1 {
+                font-size: 1.5em;
+                text-align: center;
+                background-color: lightgreen;
+                padding: 10px;
+                font-family: 'Rock Salt', cursive;
+            }
+
+            .main-top-rated .card-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .main-top-rated .card {
+                width: calc(25% - 20px); /* Adjust the width and margin as needed */
+                margin-bottom: 20px; /* Adjust the margin as needed */
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                float: left;
+                text-align: center;
+            }
+
+            .main-top-rated .card-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .main-top-rated .card-content {
+                padding: 16px;
+            }
+
+            .main-top-rated .card-name {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .main-top-rated .card-button {
+                margin-top: 16px;
+                padding: 8px 16px;
+                background-color: #4caf50; /* Green */
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .main-popular-places {
+                margin: 10px;
+                clear: left;
+
+            }
+
+            .main-popular-places h1 {
+                font-size: 1.5em;
+                text-align: center;
+                background-color: lightgreen;
+                padding: 10px;
+                font-family: 'Rock Salt', cursive;
+
+            }
+
+            .main-popular-places .card-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .main-popular-places .card {
+                width: calc(25% - 20px); /* Adjust the width and margin as needed */
+                margin-bottom: 20px; /* Adjust the margin as needed */
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                float: left;
+                text-align: center;
+            }
+
+            .main-popular-places .card-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .main-popular-places .card-content {
+                padding: 16px;
+            }
+
+            .main-popular-places .card-name {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .main-popular-places .card-button {
+                margin-top: 16px;
+                padding: 8px 16px;
+                background-color: #4caf50; /* Green */
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+
+            .team-section {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                margin-top: 50px;
+            }
+
+            .team-member {
+                position: relative;
+                text-align: center;
+                flex-basis: 100px;
+                flex-grow: 1;
+                margin-bottom: 10px;
+            }
+
+            .team-image {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+
+            .team-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .team-overlay {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                margin-bottom: 10px;
+            }
+
+            .team-member:hover .team-overlay {
+                opacity: 1;
+            }
+
+            .team-overlay .team-name {
+                margin-bottom: 10px;
+                font-size: 1rem;
+            }
+
+            .team-overlay .team-details {
+                display: none;
+            }
+
+            .team-member:hover .team-overlay .team-name {
+                display: none;
+            }
+
+            .team-member:hover .team-overlay .team-details {
+                display: block;
+            }
+
+            .team-overlay p {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
+
+            .social-media {
+                margin-top: 10px;
+            }
+
+            .social-media a {
+                color: #fff;
+                margin-right: 5px;
+            }
+            .team-name > h1{
+                background-color: lightgreen;
+            }
+
+            @media screen and (max-width: 768px) {
+                .team-member {
+                    flex-basis: 100%;
+                }
+            }
+
+
+            .contact-us > h1{
+                font-size: 1.5em;
+                text-align: center;
+                background-color: lightgreen;
+                padding: 10px;
+                font-family: 'Rock Salt', cursive;
+
+            }
+            .contact-us .location h1{
+                font-size: 1.2em;
+                color: white;
+                text-align: center;
+                background-color: slategrey;
+                padding: 10px;
+
+            }
+
+
+            .contact-form {
+                width: 500px;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: #f2f2f2;
+                border-radius: 8px;
+            }
+
+            .contact-form h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .form-group label{
+                text-align: left;
+            }
+
+            button[type="submit"] {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            .map-container {
+                width: 500px;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: #f2f2f2;
+                border-radius: 8px;
+            }
+
+            footer {
+                background-color: darkseagreen;
+                text-align: center; /* Add text-align property */
+                padding: 20px 0; /* Adjust padding as needed */
+                clear: both;
+            }
+
+            .footer p {
+                margin: 0;
+            }
+
+            .footer font{
+                color: white;
+                font-size: 1.5em;
+            }
+            .main-contact-flex-container {
+                background-color: ;
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+            }
+            .main-contact-flex-container > div
+            {
+                text-align:center;
+                margin: 10px;
+                padding: 10px;
+                float : left;
+            }
+            #active{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: blue;
+
+            }
+            /* Media queries for responsive layout */
+            @media screen and (max-width: 768px) {
+                .main-banner .overlay h1 {
+                    font-size: 2em;
+                }
+
+                .main-banner .overlay p {
+                    font-size: 1.5em;
+                }
+
+                .cta-button {
+                    padding: 10px 20px;
+                    font-size: 0.8rem;
+                }
+
+                .main-about-flex-container {
+                    flex-direction: column;
+                }
+
+                .main-about-flex-container > div {
+                    width: 100%;
+                    padding: 10px;
+                }
+
+                .main-about-flex-container h1 {
+                    font-size: 1.5em;
+                }
+
+                .main-about-flex-container img {
+                    width: 100%;
+                }
+
+                .main-about-flex-container ul {
+                    font-size: 1.2em;
+                }
+
+                .main-top-rated .card {
+                    width: calc(50% - 20px);
+                }
+
+                .main-popular-places .card {
+                    width: calc(50% - 20px);
+                }
+
+                .contact-form {
+                    width: 100%;
+                }
+
+                .map-container {
+                    width: 100%;
+                }
+            }
+
+            @media screen and (max-width: 576px) {
+                .overlay {
+                    margin-top: 10%;
+                    padding: none;
+                    font-size: 80%;
+                }
+
+                .feature,
+                .images-section img,
+                .location,
+                .team-member,
+                .top-place,
+                .popular-place {
+                    width: 100%;
+                }
+
+                .main-about-flex-container h1 {
+                    font-size: 1.2em;
+                }
+
+                .main-about-flex-container ul {
+                    font-size: 1em;
+                }
+
+                .main-top-rated .card {
+                    width: 100%;
+                }
+
+                .main-popular-places .card {
+                    width: 100%;
+                }
+            }
+            /* Style for the dropdown container */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+                z-index: 4;
+            }
+
+            /* Style for the dropdown content */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                top: 0px; /* Adjust this value to control the distance between the dropdown and the icon */
+                left: 20px; /* Adjust this value to control the alignment of the dropdown */
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 2;
+            }
+
+            /* Style for the links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 20px 16px;
+                text-decoration: none;
+                display: block;
+                z-index: 3;
+            }
+
+            /* Style for the links on hover */
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Show the dropdown content when hovering over the dropdown container */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="flex-header">
+                    <div class="logo logo-animation">
+                        <a href="index.html"><font color="darkorange">essenseof</font><font>Nepal.com</font></a>
+                    </div>
+                    <div class="row social">
+                        <address>Kathmandu, Nepal, +977-9867034854</address>
+                        <hr>
+                        <a target = "blank" href = 'https://www.youtube.com/channel/UC-gCUMK_EGUqJ7P9VA7BJmQ'><i class="fab fa-youtube"></i></a>
+                        <a target = "blank" href='https://twitter.com/codingCommander' ><i class="fab fa-twitter"></i></a>
+                        <a target = "blank" href='https://www.facebook.com/codingcommanders/'><i class='fab fa-facebook'></i></a>
+                        <a target = "blank" href='https://www.instagram.com/codingcommanders'><i class='fab fa-instagram'></i></a>
+                    </div>
+                </div>
+                <nav class="flex-nav">
+                    <div>
+                        <a href="index.html" id="active">Home</a>
+                    </div>
+                    <div>
+                        <a href="aboutus.html">About us</a>
+                    </div>
+                    <div>
+                        <a href="popularplaces.html">Popular</a>
+                    </div>
+                    <div>
+                        <a href="gallery.html">Gallery</a>
+                    </div>
+                    <div>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="blog.html"><img src="login.png" width="20px;"></a>
+                        <div class="dropdown-content">
+                            <a href="login.html" style="font-size: 1em;">Login</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <section class="main-banner">
+                    <div class="video-container">
+                        <video class="banner-video" autoplay loop muted>
+                            <source src="video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="overlay">
+                            <h1>WELCOME TO essenseofnepal.com :</h1>
+                            <p>"Embark on an Extraordinary Journey through the Enchanting Land of the Himalayas."</p>
+                            <a href="#about"><button class="cta-button">Make a tour...</button></a>
+                        </div>
+                    </div>
+                </section>
+                <section class="main-about" id="about">
+                    <div class="main-about-flex-container">
+                        <div>
+                            <h1>
+                                About Us
+                            </h1>
+                            <p>Welcome to Essence of Nepal! We are dedicated to showcasing the awe-inspiring beauty and cultural richness of Nepal to travelers from around the world. Our curated selection of destinations and activities ensures an authentic and responsible travel experience. From the majestic peaks of the Himalayas to the serene lakeside towns and ancient cities, we offer a handpicked collection of Nepal's most enchanting places to visit. Join us in exploring the wonders of Nepal and creating unforgettable memories.
+
+                            <p>Experience Nepal like never before with EssenceofNepal.com. Our passionate team of explorers brings you firsthand knowledge and authentic recommendations. Whether you seek adventure in trekking or a spiritual retreat, our curated guides cater to all travel preferences. Uncover hidden gems, vibrant festivals, and warm hospitality as you embark on an unforgettable journey through Nepal's captivating landscapes and cultural treasures. </p>
+                        </div>
+                        <div>
+                            <center><img src="mounteverest.jpg" width="400px" height="600px"/></center>
+                        </div>
+                        <div>
+                            <h1>Features</h1>
+                            <ul>
+                                <li>Comprehensive destination guides</li>
+                                <li>Insider travel tips</li>
+                                <li>Curated itineraries</li>
+                                <li>Adventure activities</li>
+                                <li>Community engagement</li>
+                            </ul>
+                            <p>"Embark on a transformative journey to Nepal with our comprehensive guides, insider tips, and curated itineraries. Immerse yourself in the awe-inspiring beauty of the Himalayas, uncover hidden gems, and indulge in thrilling adventure activities. Engage with local communities, foster cultural exchanges, and make a positive impact. Explore Nepal's essence and create lifelong memories in this enchanting destination. Whether you're a seasoned traveler or a first-time visitor, EssenceofNepal.com invites you to experience Nepal like never before – a land where breathtaking landscapes meet rich traditions, and where every moment is infused with the spirit of wonders."</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="main-top-rated">
+                    <h1>Top Rated</h1>
+                    <div class="card-row">
+                        <div class="card">
+                            <img src="pashupatinath.jpg" alt="Image 2" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Pashupati Nath</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="text-align: justify">Pashupati is an ancient Hindu temple complex in Kathmandu, Nepal, dedicated to Lord Shiva. It is a revered pilgrimage site, attracting devotees from all over the world to participate in sacred rituals and ceremonies. As a UNESCO World Heritage Site, Pashupati holds immense cultural and religious significance, embodying the essence of Nepal's rich spiritual heritage.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="muktinath.jpg" alt="Image 3" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Muktinath</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="text-align: justify">Muktinath is a sacred pilgrimage site in Mustang, Nepal, revered by Hindus and Buddhists. The temple is dedicated to Lord Vishnu (as Muktinath) for Hindus and Avalokiteshvara (as Chenrezig) for Buddhists. Surrounded by stunning Himalayan landscapes, Muktinath attracts pilgrims and trekkers seeking spiritual blessings and enlightenment.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="chitwannationalpark.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Chitwan National Park</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                </div>
+                                <p style="text-align: justify">Chitwan a cherished destination in Nepal, known for its rich wildlife and lush landscapes. The Chitwan National Park is a UNESCO World Heritage Site and offers thrilling wildlife safaris, attracting visitors from around the globe. Explore the diverse flora and fauna, including endangered species like the Bengal tiger and one-horned rhino, making Chitwan a paradise.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="pokhara.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Few Lake Pokhara</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <p style="text-align: justify">Fewa Lake, also known as Phewa Lake, is a picturesque freshwater lake situated in the Pokhara Valley of Nepal. It is the second-largest lake in the country and a popular destination for both tourists and locals alike. Surrounded by lush hills and the snow-capped Annapurna and Dhaulagiri mountain ranges, Fewa Lake offers stunning views and a serene atmosphere. </p>
+                                </div>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="main-popular-places" id="popularplaces">
+                    <h1>Popular Destinations</h1>
+                    <div class="card-row">
+                        <div class="card">
+                            <img src="stupa.jpg" alt="Image 2" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Swayambhu Stupa</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-starchecked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p style="text-align: justify">Swayambhunath Stupa, also known as the "Monkey Temple," is an ancient and sacred stupa perched atop a hill in Kathmandu, Nepal. This iconic structure is a UNESCO World Heritage Site and holds great religious significance for both Buddhists and Hindus. With its serene ambiance, captivating architecture, and panoramic views of the Kathmandu Valley, Swayambhunath Stupa attracts visitors seeking spiritual solace and a glimpse into Nepal's rich cultural heritage.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="sarangkot.jpg" alt="Image 3" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Sarangkot View Point</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p style="text-align: justify">Sarangkot View Point is a popular vantage point located near Pokhara, Nepal, offering breathtaking panoramic views of the Annapurna and Dhaulagiri mountain ranges. Renowned for its stunning sunrise and sunset vistas, Sarangkot is a favorite destination for nature enthusiasts, trekkers, and photographers. Visitors can witness the majestic Himalayan peaks, Phewa Lake, and the surrounding lush landscapes, creating a memorable and awe-inspiring experience in the heart of Nepal's natural beauty.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="Lumbini.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Lumbini</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p style="text-align: justify">
+                                    Lumbini is a sacred and historic site in Nepal, revered as the birthplace of Siddhartha Gautama, who later became known as Buddha, the founder of Buddhism. It holds immense cultural and spiritual significance for Buddhists worldwide, attracting pilgrims and visitors seeking enlightenment and tranquility. The UNESCO World Heritage Site is adorned with monasteries, stupas, and the Mayadevi Temple, offering a serene and contemplative ambiance for those exploring the roots of Buddhism and the life of Lord Buddha.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="raralake.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Rara Lake</h3>
+                                <div class="rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star "></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <p style="text-align: justify">Rara Lake is a pristine and captivating gem nestled in the remote Mugu district of Nepal. As the country's largest lake, Rara boasts crystal-clear waters reflecting the majestic snow-capped peaks surrounding it. With its untouched wilderness and diverse flora and fauna, including endangered species like the red panda, Rara Lake is a paradise for nature lovers and trekkers seeking a serene and off-the-beaten-path adventure in the lap of the Himalayas.</p>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="contact-us">
+                    <h1>Contact Us</h1>
+                    <div class="main-contact-flex-container">
+                        <div>
+                            <form class="contact-form">
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" placeholder="Your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="Your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message:</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Your message"></textarea>
+                                </div>
+                                <button type="submit">Send Message</button>
+                            </form>
+                        </div>
+                        <div class="location">
+                            <h1>Location</h1>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28266.24024980633!2d85.31301323162514!3d27.717245198855003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1900ab2e5db5%3A0xf29a60efb00e209d!2sKathmandu%2044600%2C%20Nepal!5e0!3m2!1sen!2sus!4v1565066559304!5m2!1sen!2sus" width= "350px" height="300px" frameborder="2" style="border:0" allowfullscreen></iframe>
+                            <br>
+                            <cite>Google map location</cite>
+                        </div>
+                    </div>
+
+
+
+                </section>
+                <section class="team-name">
+                    <h1 style="text-align: center;font-family:'Cookie', cursive;color:darkorange">*** Our Hardworking Team Members ***</h1>
+                    <div class="team-section">
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="yog.jpg" alt="Team Member 1">
+                            </div>
+                            <div class="team-overlay">
+                                <h3>SHARMA YOG PRASAD</h3>
+                                <p>Phone: +977-9867034854</p>
+                                <div class="social-media">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="kaushal.jpg" alt="Team Member 2">
+                            </div>
+                            <div class="team-overlay">
+                                <h3>KAUSHAL GUPTA</h3>
+                                <p>Phone: +977-9804438046</p>
+                                <div class="social-media">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="sarad.jpg" alt="Team Member 3">
+                            </div>
+                            <div class="team-overlay">
+                                <h3>SARAD RAI</h3>
+                                <p>Phone: +977-9849959001</p>
+                                <div class="social-media">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-image">
+                                <img src="look.jpg" alt="Team Member 4">
+                            </div>
+                            <div class="team-overlay">
+                                <h3>LOOKEN RAI</h3>
+                                <p>Phone: +977-9843746072</p>
+                                <div class="social-media">
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+
+            </main>
+            <footer>
+                <p>&copy; 2023 <a href="index.html" style="text-decoration: none;"><font color="darkorange" style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">essenseof</font><font color="green"style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">nepal.com</font></a>. All rights reserved.</p>
+            </footer>
+        </div>
+
+    </body>
+</html>

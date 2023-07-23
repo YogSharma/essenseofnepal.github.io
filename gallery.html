@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Gallery</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+            }
+
+            .container {
+                margin: 10px;
+                align-items: center;
+            }
+
+            header {
+                background-color: darkseagreen;
+            }
+            
+            .row.social a{
+                padding-left: 10px;
+                color: ghostwhite;
+                text-align: left;
+            }
+
+            .row.social address{
+                padding-right: 10px;
+                padding-top: 20px;
+                color: black;
+                text-align: center;
+            }
+
+            .flex-header {
+                display: flex;
+                justify-content: space-between; /* Align divs on opposite ends */
+                align-items: center;
+            }
+
+            .logo,
+            .address {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .logo {
+                float: left;
+            }
+
+            .address {
+                float: right;
+            }
+
+            .address a {
+                display: inline-block;
+                margin: 0 5px;
+            }
+
+            .address a img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+            
+
+            .flex-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+            }
+
+            .flex-nav > div {
+                text-align: center;
+                margin: 10px;
+                padding: 10px;
+                float: left;
+            }
+
+            .logo a{
+                text-decoration: none;
+                color: green;
+                font-family: 'Cookie', cursive;
+                font-size: 3rem;
+                text-shadow: 1px 1px 1px white;
+                border-bottom: 2px solid green ;
+                border-top: 2px solid orange;
+
+            }
+
+            .flex-nav a {
+                color: white;
+                text-decoration: none;
+                font-family: monospace;
+                font-size: 1.3rem;
+            }
+
+            .flex-nav a:hover {
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: black;
+            }
+
+
+            .gallery-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .gallery-item {
+                width: calc(33% - 20px); /* Adjust the width and margin as needed */
+                margin-bottom: 20px; /* Adjust the margin as needed */
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                float: left;
+                position: relative;
+            }
+
+            .gallery-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .gallery-item .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .gallery-item:hover .overlay {
+                opacity: 1;
+            }
+
+            .gallery-item .overlay-content {
+                color: #fff;
+                text-align: center;
+            }
+
+            .gallery-item .overlay-content h3 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .gallery-item .overlay-content a {
+                background-color: #fff;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: background-color 0.3s ease;
+            }
+
+            .gallery-item .overlay-content a:hover {
+                background-color: #000;
+                color: #fff;
+            }
+
+            footer {
+                background-color: rgb(0, 153, 0, 0.5);
+                text-align: center;
+                padding: 20px 0;
+                clear: both;
+            }
+
+            footer p {
+                margin: 0;
+            }
+            #active{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: blue;
+            }
+            /* Style for the dropdown container */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Style for the dropdown content */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                top: 30px; /* Adjust this value to control the distance between the dropdown and the icon */
+                right: 0; /* Adjust this value to control the alignment of the dropdown */
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+            /* Style for the links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Style for the links on hover */
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Show the dropdown content when hovering over the dropdown container */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="flex-header">
+                    <div class="logo">
+                        <a href="index.html"><font color="darkorange">essenseof</font><font>Nepal.com</font></a>
+                    </div>
+                    <div class="row social">
+                        <address>Kathmandu, Nepal, +977-9867034854</address>
+                        <hr>
+                        <a target = "blank" href = 'https://www.youtube.com/channel/UC-gCUMK_EGUqJ7P9VA7BJmQ'><i class="fab fa-youtube"></i></a>
+                        <a target = "blank" href='https://twitter.com/codingCommander' ><i class="fab fa-twitter"></i></a>
+                        <a target = "blank" href='https://www.facebook.com/codingcommanders/'><i class='fab fa-facebook'></i></a>
+                        <a target = "blank" href='https://www.instagram.com/codingcommanders'><i class='fab fa-instagram'></i></a>
+                    </div>
+                </div>
+                <nav class="flex-nav">
+                    <div>
+                        <a href="index.html">Home</a>
+                    </div>
+                    <div>
+                        <a href="aboutus.html">About us</a>
+                    </div>
+                    <div>
+                        <a href="popularplaces.html">Popular</a>
+                    </div>
+                    <div>
+                        <a href="gallery.html" id="active">Gallery</a>
+                    </div>
+                    <div>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="blog.html"><img src="login.png" width="20px;"></a>
+                        <div class="dropdown-content">
+                            <a href="login.html" style="font-size: 1em;">Login</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <section class="main-gallery" id="gallery">
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="1%20(1).jpg" alt="Image 1">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Bouddha, Nepal, is a sacred town in the Kathmandu Valley, renowned for its massive Bouddhanath Stupa, a symbol of peace and spirituality. The stupa's striking design and the vibrant Tibetan Buddhist community make it a must-visit destination for cultural and religious enthusiasts.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(2).jpg" alt="Image 2">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Sagarmatha, also known as Mount Everest, is the highest peak in the world, standing tall at 8,848 meters (29,029 feet). Located in the Himalayas on the border between Nepal and Tibet (China), Sagarmatha is a breathtaking marvel of nature, attracting adventurers and mountaineers from around the globe to conquer its majestic summit. The mountain's sheer grandeur and awe-inspiring beauty make it an iconic symbol of human endeavor and the wonders of the natural world.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(3).jpg" alt="Image 3">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Trekking in Nepal is an unforgettable adventure, taking you through breathtaking Himalayan landscapes, charming villages, and diverse natural beauty. From the iconic Everest Base Camp trek to the Annapurna Sanctuary trail, Nepal offers a range of trekking experiences for all nature and adventure enthusiasts.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(4).jpg" alt="Image 4">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Explore the captivating world of cultures as we delve into the richness of traditions, arts, and customs from around the globe. Immerse yourself in a global journey of understanding and appreciation for the diversity that makes our world truly extraordinary. Join us in celebrating the interconnectedness and uniqueness of human societies through the lens of culture.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(5).jpg" alt="Image 5">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Experience the wonders of Nepal's majestic landscapes on horseback with our exciting horse trekking expeditions. Traverse through scenic valleys, ancient villages, and breathtaking Himalayan trails, immersing yourself in the country's natural beauty and rich cultural heritage. Unleash your spirit of adventure and make unforgettable memories in the heart of Nepal's enchanting wilderness.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(6).jpg" alt="Image 6">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Discover the vibrant and diverse communities that thrive in Nepal, each with their unique languages, traditions, and ways of life. Immerse yourself in the rich tapestry of cultures, as you learn about the warm hospitality and resilience of the Nepalese people. Uncover the captivating stories and customs that showcase the incredible diversity and unity found within Nepal's multicultural society.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(7).jpg" alt="Image 7">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>In the traditional way of filling water in a "gagri," water is poured gently into its narrow neck from a pot or bucket. The process requires careful handling to avoid spillage and maintain balance while carrying the filled gagri on the head or shoulders. This age-old practice remains a significant part of daily life in many South Asian communities.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(8).jpg" alt="Image 8">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Stupas are ancient and sacred structures found in various Buddhist regions, serving as places of worship and meditation. Typically, a stupa consists of a hemispherical dome with a square base, symbolizing the enlightened mind of the Buddha. People often walk around the stupa in a clockwise direction, performing "kora" or circumambulation, as an act of reverence and spiritual practice. These majestic structures hold great cultural and religious significance, attracting pilgrims and visitors seeking peace and spiritual solace.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(9).jpg" alt="Image 9">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(10).jpg" alt="Image 10">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Phoksundo Lake, nestled in Nepal's Dolpo region, captivates with its mesmerizing turquoise-blue waters and rugged mountain surroundings. As one of the most pristine and remote lakes in the country, it offers a serene escape for trekkers seeking untouched natural beauty. With its cultural significance and breathtaking landscape, Phoksundo Lake is a hidden gem for adventurous souls.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(11).jpg" alt="Image 11">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Lumbini, located in the Rupandehi District of Nepal, is one of the most sacred pilgrimage sites for Buddhists around the world. It is the birthplace of Siddhartha Gautama, who later became known as Buddha, the founder of Buddhism. The holy site of Lumbini is adorned with monasteries, stupas, and the Mayadevi Temple, attracting pilgrims and visitors seeking spiritual enlightenment and historical significance.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="1%20(12).jpg" alt="Image 12">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <p>Pashupati is an ancient Hindu temple complex in Kathmandu, Nepal, dedicated to Lord Shiva. It is a revered pilgrimage site, attracting devotees from all over the world to participate in sacred rituals and ceremonies. As a UNESCO World Heritage Site, Pashupati holds immense cultural and religious significance, embodying the essence of Nepal's rich spiritual heritage.</p>
+                                    <a href="#">Click</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2023 <a href="index.html" style="text-decoration: none;"><font color="darkorange" style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">essenseof</font><font color="green"style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">nepal.com</font></a>. All rights reserved.</p>
+            </footer>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+            }
+
+            .container {
+                margin: 10px;
+            }
+
+            header{
+                background-color: darkseagreen;
+            }
+
+            .row.social a{
+                padding-left: 10px;
+                color: ghostwhite;
+                text-align: left;
+            }
+
+            .row.social address{
+                padding-right: 10px;
+                padding-top: 20px;
+                color: black;
+                text-align: center;
+            }
+
+            .flex-header {
+                display: flex;
+                justify-content: space-between; /* Align divs on opposite ends */
+                align-items: center;
+            }
+
+            .logo,
+            .address {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .logo {
+                float: left;
+            }
+
+            .address {
+                float: right;
+            }
+
+            .address a {
+                display: inline-block;
+                margin: 0 5px;
+            }
+
+            .address a img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+
+
+            .flex-nav {
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+
+            }
+            .flex-nav > div
+            {
+                text-align:center;
+                margin: 10px;
+                padding: 10px;
+                float : left;
+            }
+            .logo a{
+                text-decoration: none;
+                color: green;
+                font-family: 'Cookie', cursive;
+                font-size: 3rem;
+                text-shadow: 1px 1px 1px white;
+                border-bottom: 2px solid green ;
+                border-top: 2px solid orange;
+
+            }
+            .flex-nav a{
+                color: white;
+                text-decoration: none;
+                font-family: monospace;
+                font-size: 1.3rem;
+            }
+            .flex-nav a:hover{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: black;
+            }
+
+            .main-about-flex-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .main-about-flex-container > div {
+                text-align: justify;
+                margin: 10px;
+                padding: 10px;
+                flex: 1 1 200px;
+            }
+
+            /* Media query for small screens */
+            @media (max-width: 767px) {
+                .main-about-flex-container {
+                    flex-direction: column;
+                }
+            }
+
+
+            .checked {
+                color: orange;
+            }
+
+            footer {
+                background-color: darkseagreen;
+                text-align: center;
+                padding: 20px 0;
+                clear: both;
+            }
+
+            footer p {
+                margin: 0;
+            }
+            button {
+                margin-top: 16px;
+                padding: 8px 16px;
+                background-color: #4caf50; /* Green */
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            #active{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: blue;
+            }
+            .main-blog-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .blog-post {
+                padding: 20px;
+                margin-bottom: 30px;
+                border: 1px solid #ccc;
+                background-color: #f9f9f9;
+                flex: 1 1 400px;
+                position: relative; /* Add position for name placement */
+                overflow: hidden; /* Hide overflow to round the image */
+                cursor: pointer; /* Change cursor on hover */
+                transition: box-shadow 0.3s, transform 0.3s; /* Add transition effects */
+                display: flex; /* Add flex display to blog-post */
+                flex-direction: column; /* Set the flex direction to column */
+            }
+            .blog-title {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .blog-author {
+                color: #888;
+                margin-bottom: 10px;
+                position: absolute; /* Position the author name */
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent background */
+                transform: translateY(100%); /* Initially move the name outside the blog post */
+                transition: transform 0.3s; /* Add transition effect */
+            }
+
+            .blog-date {
+                color: #888;
+                margin-bottom: 10px;
+            }
+
+            .blog-image {
+                max-width: 10%;
+                height: auto;
+                border-radius: 50%; /* Make the image round */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+                margin-bottom: 10px;
+                transition: transform 0.3s; /* Add transition effect */
+            }
+
+            .blog-content {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            /* Add hover effects */
+            .blog-post:hover {
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                transform: translateY(-5px);
+            }
+
+            .blog-post:hover .blog-author {
+                transform: translateY(0);
+            }
+            .blog-post form label,
+            .blog-post form input,
+            .blog-post form textarea,
+            .blog-post form button {
+                margin-bottom: 10px;
+                padding:5px;
+            }
+            /* Style for the dropdown container */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Style for the dropdown content */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                top: 30px; /* Adjust this value to control the distance between the dropdown and the icon */
+                right: 0; /* Adjust this value to control the alignment of the dropdown */
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+            /* Style for the links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Style for the links on hover */
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Show the dropdown content when hovering over the dropdown container */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="flex-header">
+                    <div class="logo">
+                        <a href="index.html"><font color="darkorange">essenseof</font><font>Nepal.com</font></a>
+                    </div>
+                    <div class="row social">
+                        <address>Kathmandu, Nepal, +977-9867034854</address>
+                        <hr>
+                        <a target = "blank" href = 'https://www.youtube.com/channel/UC-gCUMK_EGUqJ7P9VA7BJmQ'><i class="fab fa-youtube"></i></a>
+                        <a target = "blank" href='https://twitter.com/codingCommander' ><i class="fab fa-twitter"></i></a>
+                        <a target = "blank" href='https://www.facebook.com/codingcommanders/'><i class='fab fa-facebook'></i></a>
+                        <a target = "blank" href='https://www.instagram.com/codingcommanders'><i class='fab fa-instagram'></i></a>
+                    </div>
+                </div>
+                <nav class="flex-nav">
+                    <div>
+                        <a href="index.html">Home</a>
+                    </div>
+                    <div>
+                        <a href="aboutus.html" >About us</a>
+                    </div>
+                    <div>
+                        <a href="popularplaces.html">Popular</a>
+                    </div>
+                    <div>
+                        <a href="gallery.html">Gallery</a>
+                    </div>
+                    <div>
+                        <a href="blog.html" id="active">Blog</a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="blog.html"><img src="login.png" width="20px;"></a>
+                        <div class="dropdown-content">
+                            <a href="login.html" style="font-size: 1em;">Login</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <div class="main-blog-container">
+                    <div class="blog-post">
+                        <img class="blog-image" src="blog1.jpg" alt="Blog Post Image 1">
+                        <p class="blog-date">Maria Dcruz</p>
+                        <p class="blog-date">Published on July 23, 2023</p>
+                        <h2 class="blog-title">Encounters with Wildlife in Chitwan National Park:</h2>
+                        <p class="blog-content">
+                            Our adventure took an exhilarating turn as we ventured into the lush wilderness of Chitwan National Park. Home to a diverse array of flora and fauna, this wildlife haven offered us a thrilling jungle safari. The sight of majestic elephants grazing peacefully, one-horned rhinos gracefully ambling through the tall grass, and the elusive Bengal tiger stealthily traversing its territory left us in awe of nature's wonders. Yet, beyond the captivating wildlife, it was the warm hospitality and genuine smiles of the Tharu community during our stay in a traditional homestay that truly touched our hearts, fostering a deeper appreciation for Nepal's cultural richness.
+                        </p>
+                        <h2 class="blog-title">Write a Comment</h2>
+                        <form>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                            <br>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <br>
+                            <label for="comment">Comment:</label>
+                            <textarea id="comment" name="comment" rows="4" required></textarea>
+                            <br>
+                            <button type="submit">Submit Comment</button>
+                        </form>
+                    </div>
+
+                    <div class="blog-post">
+                        <img class="blog-image" src="blog2.jpg" alt="Blog Post Image 2">
+                        <p class="blog-date">Mark Henry</p>
+                        <p class="blog-date">Published on July 24, 2023</p>
+                        <h2 class="blog-title">A Spiritual Pilgrimage to Lumbini:</h2>
+                        <p class="blog-content">
+                            As we continued our journey, we embarked on a sacred pilgrimage to Lumbini, the birthplace of Lord Buddha. The sacred Maya Devi Temple, where Prince Siddhartha Gautama was born, stood amidst ancient ruins, emanating an aura of profound serenity and reverence. Under the shade of the sacred Bodhi Tree, we found solace in meditation, contemplating the profound teachings of Buddha. Lumbini's spiritual ambiance allowed us to connect with our inner selves and experience a sense of tranquility that transcended the boundaries of time and space.
+                        </p>
+                        <h2 class="blog-title">Write a Comment</h2>
+                        <form>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                            <br>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <br>
+                            <label for="comment">Comment:</label>
+                            <textarea id="comment" name="comment" rows="4" required></textarea>
+                            <br>
+                            <button type="submit">Submit Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+            <footer>
+                <section class="footer">
+                    <p>&copy; 2023 <a href="index.html" style="text-decoration: none;"><font color="darkorange" style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">essenseof</font><font color="green"style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">nepal.com</font></a>. All rights reserved.</p>
+                </section>
+            </footer>
+        </div>
+    </body>
+</html>

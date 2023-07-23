@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Popular Places</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Dancing+Script&family=Pacifico&family=Rock+Salt&display=swap" rel="stylesheet">
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            .container {
+                margin: 10px;
+                align-items: center;
+            }
+
+            header {
+                background-color: darkseagreen;
+            }
+
+            .row.social a{
+                padding-left: 10px;
+                color: ghostwhite;
+                text-align: left;
+            }
+
+            .row.social address{
+                padding-right: 10px;
+                padding-top: 20px;
+                color: black;
+                text-align: center;
+            }
+
+            .flex-header {
+                display: flex;
+                justify-content: space-between; /* Align divs on opposite ends */
+                align-items: center;
+            }
+
+            .logo,
+            .address {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .logo {
+                float: left;
+            }
+
+            .address {
+                float: right;
+            }
+
+            .address a {
+                display: inline-block;
+                margin: 0 5px;
+            }
+
+            .address a img {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+
+
+
+            .flex-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+            }
+
+            .flex-nav > div {
+                text-align: center;
+                margin: 10px;
+                padding: 10px;
+                float: left;
+            }
+
+            .logo a{
+                text-decoration: none;
+                color: green;
+                font-family: 'Cookie', cursive;
+                font-size: 3rem;
+                text-shadow: 1px 1px 1px white;
+                border-bottom: 2px solid green ;
+                border-top: 2px solid orange;
+
+            }
+
+            .flex-nav a {
+                color: white;
+                text-decoration: none;
+                font-family: monospace;
+                font-size: 1.3rem;
+            }
+
+            .flex-nav a:hover {
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: black;
+            }
+
+            .main-popular-places {
+                margin: 10px;
+            }
+
+            .main-popular-places h1 {
+                font-size: 1.5em;
+                text-align: center;
+                background-color: lightgreen;
+                padding: 10px;
+            }
+
+            .main-popular-places .card-row {
+                text-align: justify;
+                margin: 10px;
+                padding: 10px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between; /* Add space between cards */
+            }
+
+            .main-popular-places .card {
+                width: calc(25% - 20px); /* Adjust the width and margin as needed */
+                margin-bottom: 20px; /* Adjust the margin as needed */
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                overflow: hidden;
+                text-align: center;
+            }
+
+            .main-popular-places .card-image {
+                width: 100%;
+                height: auto; /* Adjust the height as needed */
+            }
+
+            .main-popular-places .card-content {
+                padding: 16px;
+            }
+
+            .main-popular-places .card-name {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .main-popular-places .card-button {
+                margin-top: 16px;
+                padding: 8px 16px;
+                background-color: #4caf50; /* Green */
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            footer {
+                background-color: rgba(0, 153, 0, 0.5);
+                text-align: center;
+                padding: 20px 0;
+                clear: both;
+            }
+
+            footer p {
+                margin: 0;
+            }
+            #active{
+                text-decoration: none;
+                border-bottom: 2px solid black;
+                padding-bottom: 10px;
+                color: blue;
+            }
+
+            @media (max-width: 767px) {
+                .main-popular-places .card {
+                    width: calc(50% - 20px); /* Adjust the width and margin as needed for small screens */
+                }
+            }
+            main hr{
+                border: none;
+                height: 10px;
+                background: linear-gradient(-135deg, #fff 5px, transparent 0) 0 5px, linear-gradient(135deg, #fff 5px, #8c8c8c 0) 0 5px;
+                background-color: #fff;
+                background-position: left bottom;
+                background-repeat: repeat-x;
+                background-size: 10px 10px;
+            }
+             /* Style for the dropdown container */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Style for the dropdown content */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                top: 30px; /* Adjust this value to control the distance between the dropdown and the icon */
+                right: 0; /* Adjust this value to control the alignment of the dropdown */
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                z-index: 1;
+            }
+
+            /* Style for the links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Style for the links on hover */
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            /* Show the dropdown content when hovering over the dropdown container */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="flex-header">
+                    <div class="logo">
+                        <a href="index.html"><font color="darkorange">essenseof</font><font>Nepal.com</font></a>
+                    </div>
+                    <div class="row social">
+                        <address>Kathmandu, Nepal, +977-9867034854</address>
+                        <hr>
+                        <a target = "blank" href = 'https://www.youtube.com/channel/UC-gCUMK_EGUqJ7P9VA7BJmQ'><i class="fab fa-youtube"></i></a>
+                        <a target = "blank" href='https://twitter.com/codingCommander' ><i class="fab fa-twitter"></i></a>
+                        <a target = "blank" href='https://www.facebook.com/codingcommanders/'><i class='fab fa-facebook'></i></a>
+                        <a target = "blank" href='https://www.instagram.com/codingcommanders'><i class='fab fa-instagram'></i></a>
+                    </div>
+                </div>
+                <nav class="flex-nav">
+                    <div>
+                        <a href="index.html">Home</a>
+                    </div>
+                    <div>
+                        <a href="aboutus.html">About us</a>
+                    </div>
+                    <div>
+                        <a href="popularplaces.html" id="active">Popular</a>
+                    </div>
+                    <div>
+                        <a href="gallery.html">Gallery</a>
+                    </div>
+                    <div>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="dropdown">
+                        <a href="blog.html"><img src="login.png" width="20px;"></a>
+                        <div class="dropdown-content">
+                            <a href="login.html" style="font-size: 1em;">Login</a>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <section class="main-popular-places" id="popularplaces">
+                    <div class="card-row">
+                        <div class="card">
+                            <img src="ghandruk.jpg" alt="Image 2" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Ghandruk</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="bandipur.jpg" alt="Image 3" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Bandipur</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="dhulikhel.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Dhulikhel</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="tanse.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Rani Mahal</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <hr>
+                <section class="main-popular-places" id="popularplaces">
+                    <div class="card-row">
+                        <div class="card">
+                            <img src="patan.jpg" alt="Image 2" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Patan Lalitpur</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="nagarkot.jpg" alt="Image 3" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Nagarkot</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="bardiya.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Bardiya National Park</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="janakpur.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Janakpur</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <hr>
+                <section class="main-popular-places" id="popularplaces">
+                    <div class="card-row">
+                        <div class="card">
+                            <img src="rupakot.jpg" alt="Image 2" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Rupakot</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="karnali.jpg" alt="Image 3" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Karnali</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="everest.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Everest Base Camp</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <img src="poon.jpg" alt="Image 4" class="card-image">
+                            <div class="card-content">
+                                <h3 class="card-name">Poon Hill</h3>
+                                <button class="card-button">View More</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <a href="#" style="text-decoration: none; color:dodgerblue;"><h2 style="padding:10px" class="animate">Explore More...............</h2></a>
+            </main>
+            <footer>
+                <p>&copy; 2023 <a href="index.html" style="text-decoration: none;"><font color="darkorange" style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">essenseof</font><font color="green"style="text-shadow: 1px 1px white;font-family:'Cookie', cursive ;font-size: 2.5em">nepal.com</font></a>. All rights reserved.</p>
+            </footer>
+        </div>
+    </body>
+</html>
